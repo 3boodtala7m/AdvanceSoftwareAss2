@@ -1,13 +1,13 @@
 public class ReportGenerator {
-    public void generateStaffListReport(User user) {
-        System.out.println(user.getName() + "'s teams':");
-        for (User team : user.getTeam()) {
-            System.out.println(team.getName());
+    public void generateEmployeeListReport(Employee employee) {
+        System.out.println("Employee: " + employee.getEmployeeName() + "'s Subordinates:");
+        for (Employee subordinate : employee.getSubordinates()) {
+            System.out.println(subordinate.getEmployeeName());
         }
     }
 
-    public void generateRequiredBudgetReport(User user) {
-        double budget = user.calculateBudget();
-        System.out.println(user.getName() + "'s Required Budget: $" + budget);
+    public void generateBudgetReport(Employee employee) {
+        double budget = employee.calculateBudget();
+        System.out.println("Employee: " + employee.getEmployeeName() + "'s Required Budget: $" + budget);
     }
 }

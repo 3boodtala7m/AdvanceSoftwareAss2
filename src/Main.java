@@ -1,42 +1,42 @@
 public class Main {
     public static void main(String[] args) {
 
-        FakeDatabase db = FakeDatabase.getInstance();
+        EmployeeDatabase database = EmployeeDatabase.getInstance();
 
-        Staff employee1 = new Staff(1001, "Abdullah", 28, 17.5, 160);
-        Staff employee2 = new Staff(1002, "Shaher", 32, 19.75, 175);
-        Staff employee3 = new Staff(1003, "Mohammed", 24, 15.0, 140);
+        Employee staff1 = new Staff(1001, "Abdullah", 28, 17.5, 160);
+        Employee staff2 = new Staff(1002, "Shaher", 32, 19.75, 175);
+        Employee staff3 = new Staff(1003, "Mohammed", 24, 15.0, 140);
 
-        Manager managerA = new Manager(2001, "Ahmad", 35, 25.0);
-        Manager managerB = new Manager(2002, "Salameh", 40, 23.5);
+        Employee managerA = new Manager(2001, "Ahmad", 35, 25.0);
+        Employee managerB = new Manager(2002, "Salameh", 40, 23.5);
 
-        managerA.addTeam(employee1);
-        managerB.addTeam(employee2);
-        managerA.addTeam(employee3);
+        ((Manager) managerA).addSubordinate(staff1);
+        ((Manager) managerB).addSubordinate(staff2);
+        ((Manager) managerA).addSubordinate(staff3);
 
-        Director directorX = new Director(3001, "Mostafa", 42, 30.0);
+        Employee directorX = new Director(3001, "Mostafa", 42, 30.0);
 
-        directorX.addTeam(managerA);
-        directorX.addTeam(managerB);
+        ((Director) directorX).addSubordinate(managerA);
+        ((Director) directorX).addSubordinate(managerB);
 
-        db.addUser(employee1);
-        db.addUser(employee2);
-        db.addUser(employee3);
-        db.addUser(managerA);
-        db.addUser(managerB);
-        db.addUser(directorX);
+        database.addEmployee(staff1);
+        database.addEmployee(staff2);
+        database.addEmployee(staff3);
+        database.addEmployee(managerA);
+        database.addEmployee(managerB);
+        database.addEmployee(directorX);
 
         ReportGenerator reportGenerator = new ReportGenerator();
 
         displayHeader("Company Report");
 
         displaySectionHeader("Director Report");
-        reportGenerator.generateStaffListReport(directorX);
-        reportGenerator.generateRequiredBudgetReport(directorX);
+        reportGenerator.generateEmployeeListReport(directorX);
+        reportGenerator.generateBudgetReport(directorX);
 
         displaySectionHeader("Manager Report");
-        reportGenerator.generateStaffListReport(managerA);
-        reportGenerator.generateRequiredBudgetReport(managerA);
+        reportGenerator.generateEmployeeListReport(managerA);
+        reportGenerator.generateBudgetReport(managerA);
 
         displayFooter("End of Report");
     }

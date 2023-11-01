@@ -1,29 +1,29 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Director extends User {
-    private List<User> team;
+public class Director extends Employee {
+    private List<Employee> subordinates;
 
     public Director(int id, String name, int age, double hourlyRate) {
         super(id, name, age, hourlyRate, 0);
-        team = new ArrayList<>();
+        subordinates = new ArrayList<>();
     }
 
     @Override
     public double calculateBudget() {
         double budget = 0;
-        for (User teamMember : team) {
-            budget += teamMember.calculateBudget();
+        for (Employee subordinate : subordinates) {
+            budget += subordinate.calculateBudget();
         }
         return budget;
     }
 
     @Override
-    public List<User> getTeam() {
-        return team;
+    public List<Employee> getSubordinates() {
+        return subordinates;
     }
 
-    public void addTeam(User user) {
-        team.add(user);
+    public void addSubordinate(Employee employee) {
+        subordinates.add(employee);
     }
 }
