@@ -1,4 +1,4 @@
-i put screenshoot for class digram -IN-> src file .
+i put screenshoot for class digram -IN-> src file . 
 This code in general expresses the nature of the company, including its employees, and what is the authority of each of them individually, such as Staff, Manager, and Director.
 the most important features of the way this code is written :
 1 -> Inheritance "IS - A": This relationship indicates that a subclass is a type of its superclass : subclasses Staff, Manager, Director that inherit from the common superclass Employee.
